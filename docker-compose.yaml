@@ -1,18 +1,36 @@
 services:
-  app:
+  app1:
     build:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
     expose:
-      - "5000" # Isse app host network ke port 5000 par expose nahi hogi, sirf Docker internal network mein expose hogi.
+      - "5001"
+
+  app2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    expose:
+      - "5002"
+
+  app3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    expose:
+      - "5003"
 
   nginx:
     image: nginx:alpine
     restart: unless-stopped
     ports:
-      - "80:80" # Host ka port 80 map kiya container ke port 80 se
+      - "80:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
-      - app # Nginx container tabhi chalega jab app container start ho chuka ho
+      - app1
+      - app2
+      - app3
