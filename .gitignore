@@ -1,4 +1,5 @@
 node_modules/
+nginx/ssl/
 # Logs
 logs
 *.log
