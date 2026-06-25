@@ -38,15 +38,18 @@ graph TD
     SSH_Connect -->|2. Secure SSH Session| SSH_Daemon
     SSH_Daemon -->|3. Commands Executed| Git_Pull
     Git_Pull -->|4. Update Code| Docker_Compose
-    Docker_Compose -->|5. Rebuild & Deploy| Nginx_Proxy & App1 & App2 & App3
+    Docker_Compose -->|5. Rebuild and Deploy| Nginx_Proxy
+    Docker_Compose -->|5. Rebuild and Deploy| App1
+    Docker_Compose -->|5. Rebuild and Deploy| App2
+    Docker_Compose -->|5. Rebuild and Deploy| App3
     
     User[🌐 End User] -->|HTTP Requests on Port 80| Nginx_Proxy
     User -->|HTTPS Requests on Port 443| Nginx_Proxy
     
     Nginx_Proxy -->|301 Redirect HTTP to HTTPS| Nginx_Proxy
-    Nginx_Proxy -->|Load Balances (Least Connections)| App1
-    Nginx_Proxy -->|Load Balances (Least Connections)| App2
-    Nginx_Proxy -->|Load Balances (Least Connections)| App3
+    Nginx_Proxy -->|Load Balances - Least Connections| App1
+    Nginx_Proxy -->|Load Balances - Least Connections| App2
+    Nginx_Proxy -->|Load Balances - Least Connections| App3
 ```
 
 ---
