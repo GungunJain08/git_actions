@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     expose:
-      - "5001"
+      - "5000"
 
   app2:
     build:
@@ -13,7 +13,7 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     expose:
-      - "5002"
+      - "5000"
 
   app3:
     build:
@@ -21,7 +21,7 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     expose:
-      - "5003"
+      - "5000"
 
   nginx:
     image: nginx:alpine
